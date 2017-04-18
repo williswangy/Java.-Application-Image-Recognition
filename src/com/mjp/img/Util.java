@@ -26,7 +26,7 @@ public class Util {
 	}
 	
 	/**
-	 * 将内容写入到指定的文件中 ；创建文件
+	 * 
 	 * 
 	 * @param fileName
 	 * @param content
@@ -42,7 +42,7 @@ public class Util {
 	}
 
 	/**
-	 * 将stream 转换成 字符串
+	 * stream - string
 	 * 
 	 * @param ins
 	 * @return
@@ -84,7 +84,7 @@ public class Util {
 	}
 
 	/**
-	 * 将stream 转换成 字符串
+	 *
 	 * 
 	 * @param ins
 	 * @return
@@ -100,7 +100,7 @@ public class Util {
 	}
 
 	/**
-	 * 将stream 转换成 字符串
+	 *
 	 * 
 	 * @param ins
 	 * @return
