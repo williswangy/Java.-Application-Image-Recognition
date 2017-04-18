@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @author Administrator
+ * @author Yuan Wang
  * 
  */
 public class ProcessImage {
@@ -36,7 +36,7 @@ public class ProcessImage {
 	}
 
 	/*
-	 * 彩色变灰度
+	 *colar - gray
 	 */
 	private static int[] rgb2gray(int imagebufferint[], int width, int height,
 			int perline) {
@@ -53,7 +53,7 @@ public class ProcessImage {
 		return realimagebuffer;
 	}
 
-	/* 灰度变二值 */
+	/* gray - 2 vlaue */
 
 	private static byte[] gray2bool(int realimagebuffer[], int width,
 			int height, int Threshold) {
@@ -71,7 +71,7 @@ public class ProcessImage {
 	}
 
 	/*
-	 * 比较一个矩阵是否同另一个矩阵的某一部分相等
+	 *  Compare whether one matrix is equal with another part of matrix
 	 */
 	private static boolean matrixequal(byte imagebufferbool[],
 			byte partimage[][], int clside[], int rowside[], int bianchang[],
@@ -101,7 +101,7 @@ public class ProcessImage {
 	}
 
 	/*
-	 * 彩色聚类后变为二值
+	 * color 2 value
 	 */
 	@SuppressWarnings("unused")
 	private static byte[] colour2bool(int imagebufferint[], int perline,
@@ -140,9 +140,9 @@ public class ProcessImage {
 			}
 		}
 
-		// 找出个数最多的4个，除了0和255
+		// find the most 4, except for 0 and 255
 		int temp;
-		// 用快速排序
+		// quick sort
 		for (int i = 0; i < end; i++) {
 			for (int j = i; j > 0; j--) {
 				if (colournumber[j] > colournumber[j - 1]) {
@@ -173,7 +173,7 @@ public class ProcessImage {
 
 	/*
 	 * //////////////////////////////////////////////////////////////////////////
-	 * 主函数
+	 * main
 	 */// /////////////////////////////////////////////////////////////////////////
 	public String parse(byte imagebuffer[], int width, int height) {
 		int i = 0;
@@ -186,7 +186,7 @@ public class ProcessImage {
 		int imagebufferint[] = new int[perline * height];
 		int realimagebuffer[] = new int[width * height];
 		byte imagebufferbool[] = new byte[width * height];
-		// 将byte转成int,因为没有无符号数
+		// byte -> int
 		for (i = 0; i < height * perline; i++) {
 			if (imagebuffer[i] < 0) {
 				imagebufferint[i] = imagebuffer[i] + 256;
@@ -198,10 +198,10 @@ public class ProcessImage {
 		realimagebuffer = rgb2gray(imagebufferint, width, height, perline);
 		imagebufferbool = gray2bool(realimagebuffer, width, height, 100);
 
-		// 识别图像过程
+		// process
 		int totalsum[] = new int[width];
-		// 列加和
-		for (j = 0; j < width; j++)// 初始化
+		
+		for (j = 0; j < width; j++)// initial
 		{
 			totalsum[j] = 0;
 		}
@@ -210,7 +210,7 @@ public class ProcessImage {
 				totalsum[j] = totalsum[j] + imagebufferbool[i * width + j];
 			}
 		}
-		// 找列边
+		// find edge
 		int clside[] = new int[20];
 		int prenumber = 0;
 		int index = 0;
@@ -228,24 +228,24 @@ public class ProcessImage {
 			}
 
 		}
-		// 找行边
+		
 		int alphnumber = ((index + 1) / 2);
 		index = 0;
 		int rowside[] = new int[20];
 		int totalrowsum[] = new int[height];
-		for (j = 0; j < height; j++)// 初始化
+		for (j = 0; j < height; j++)
 		{
 			totalrowsum[j] = 0;
 		}
 		for (int y = 0; y < alphnumber; y++) {
-			// 加和
+			
 			for (i = 0; i < height; i++) {
 				for (j = clside[y * 2]; j <= clside[y * 2 + 1]; j++) {
 					totalrowsum[i] = totalrowsum[i]
 					                             + imagebufferbool[i * width + j];
 				}
 			}
-			// 找行边
+			
 			prenumber = 0;
 			for (i = 0; i < height; i++) {
 				if ((totalrowsum[i]) > 0 && (prenumber == 0)) {
@@ -261,14 +261,14 @@ public class ProcessImage {
 				}
 
 			}
-			for (i = 0; i < height; i++)// 清零
+			for (i = 0; i < height; i++)
 			{
 				totalrowsum[i] = 0;
 			}
 		}
-		// 模板写成文件
+	
 		// patternwrite(rowside, clside, width , alphnumber, imagebufferbool);
-		// 识别
+		
 
 		int bianchang[] = new int[20];
 		for (int y = 0; y < 20; y++) {
