@@ -15,9 +15,9 @@ import javax.imageio.ImageIO;
 import Acme.JPM.Encoders.GifEncoder;
 
 /**
- * 图片编辑类
+ * Picture Editer
  * 
- * @author ce
+ * @author Yuan Wang
  * 
  */
 public class ImageEditTool {
@@ -28,7 +28,7 @@ public class ImageEditTool {
 	private static final ImageEditTool instance = new ImageEditTool();
 
 	/**
-	 * 获取实例
+	 * GetInstance
 	 * 
 	 * @return
 	 */
@@ -37,8 +37,8 @@ public class ImageEditTool {
 	}
 
 	/**
-	 * 图片编辑
 	 * 
+	 * Picture Editer
 	 * @param imgParam
 	 * @throws IOException
 	 */
@@ -47,7 +47,7 @@ public class ImageEditTool {
 			return false;
 		}
 		try {
-			// 服务器文件全名
+			// full name
 			String fullFileName = imgParam.getImgPath() + imgParam.getImgName();
 			System.out.println("server imgName:" + fullFileName);
 			File f = new File(fullFileName);
