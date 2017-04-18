@@ -3,12 +3,12 @@ package com.mjp.image;
 public class ImageParam {
 	
 	/**
-	 * 文件服务器文件名
+	 * image name
 	 */
 	private String imgName;
 	
 	/**
-	 * 文件服务器路径名
+	 * image path
 	 */
 	private String imgPath;
 	
@@ -21,15 +21,15 @@ public class ImageParam {
 	 */
 	private int y;
 	/**
-	 * 图片宽度
+	 * width
 	 */
 	private int w;
 	/**
-	 * 图片高度
+	 * height
 	 */
 	private int h;
 	/**
-	 * 图片旋转角度
+	 * rotate angle
 	 */
 	private int r;
 	/**
@@ -97,7 +97,7 @@ public class ImageParam {
 	}
 	
 	/* 
-	 * (non-Javadoc)
+	 *
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString(){
