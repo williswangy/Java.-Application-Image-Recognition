@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 public class ImageUtil {
 
 	/**
-	 * @param ins
+	 * 
 	 * @return
 	 * @throws Exception
 	 */
@@ -57,7 +57,7 @@ public class ImageUtil {
 	
 
 	/**
-	 * @param bytes
+	 *
 	 * @return
 	 * @throws Exception
 	 */
